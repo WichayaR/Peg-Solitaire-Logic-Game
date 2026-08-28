@@ -33,6 +33,14 @@ export function Board({
   const validMoves = useMemo(() => getValidMoves(board), [board]);
   const pegs = useMemo(() => countPegs(board), [board]);
 
+  // moves ที่ valid สำหรับ peg ที่เลือก
+  const selectedMoves = useMemo(() => {
+    if (!selected) return [];
+    return validMoves.filter(
+      (m) => m.from.r === selected.r && m.from.c === selected.c,
+    );
+  }, [validMoves, selected]);
+
   useEffect(() => {
     onPegsChange?.(pegs);
   }, [pegs, onPegsChange]);
@@ -49,6 +57,7 @@ export function Board({
     if (board[r][c] === null) return;
     setHintMove(null);
 
+    // คลิก peg → select
     if (board[r][c] === 1) {
       if (selected && selected.r === r && selected.c === c) {
         setSelected(null);
@@ -58,6 +67,7 @@ export function Board({
       return;
     }
 
+    // คลิกหลุมว่าง → ตรวจ move
     if (board[r][c] === 0 && selected) {
       const move = validMoves.find(
         (m) =>
@@ -99,8 +109,18 @@ export function Board({
     onHintUsed?.();
   }
 
+  // สร้าง set ของ valid move keys
+  const validMoveKeys = new Set();
+  const overKeys = new Set();
+  selectedMoves.forEach((m) => {
+    validMoveKeys.add(`${m.to.r}-${m.to.c}`);
+    overKeys.add(`${m.over.r}-${m.over.c}`);
+  });
+
+  // hint keys
   const hintFromKey = hintMove ? `${hintMove.from.r}-${hintMove.from.c}` : null;
   const hintToKey = hintMove ? `${hintMove.to.r}-${hintMove.to.c}` : null;
+  const hintOverKey = hintMove ? `${hintMove.over.r}-${hintMove.over.c}` : null;
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -109,7 +129,7 @@ export function Board({
         style={{
           gridTemplateColumns: `repeat(${board.length}, ${size}px)`,
           gridTemplateRows: `repeat(${board.length}, ${size}px)`,
-          backgroundColor: '#d4a574', // wood-tone กลาง
+          backgroundColor: '#d4a574',
           backgroundImage: `
             radial-gradient(ellipse at 20% 30%, rgba(120, 80, 40, 0.15) 0%, transparent 50%),
             radial-gradient(ellipse at 80% 70%, rgba(60, 30, 10, 0.12) 0%, transparent 50%),
@@ -126,6 +146,13 @@ export function Board({
         {board.map((row, r) =>
           row.map((cell, c) => {
             const key = `${r}-${c}`;
+            const isSelected =
+              selected && selected.r === r && selected.c === c;
+            const isValidTarget = validMoveKeys.has(key);
+            const isOverJump = overKeys.has(key);
+            const isHintFrom = key === hintFromKey;
+            const isHintTo = key === hintToKey;
+            const isHintOver = key === hintOverKey;
             return (
               <Peg
                 key={key}
@@ -133,15 +160,24 @@ export function Board({
                 row={r}
                 col={c}
                 size={size}
-                selected={selected && selected.r === r && selected.c === c}
-                hintFrom={key === hintFromKey}
-                hintTo={key === hintToKey}
+                selected={isSelected}
+                validTarget={isValidTarget}
+                overJump={isOverJump}
+                hintFrom={isHintFrom}
+                hintTo={isHintTo}
+                hintOver={isHintOver}
                 onClick={() => handleCellClick(r, c)}
               />
             );
           }),
         )}
       </div>
+
+      {selected && !disabled && (
+        <div className="bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-soft text-sm font-bold text-purple-700 animate-pop-in">
+          ✨ เลือกหลุมที่กระโดดลงได้ ({selectedMoves.length} ตำแหน่ง)
+        </div>
+      )}
 
       <div className="flex items-center gap-3 text-sm font-bold text-purple-700 bg-white/60 px-5 py-2.5 rounded-full shadow-soft">
         <span>🎯 Pegs: <strong className="text-rose-dark">{pegs}</strong></span>
