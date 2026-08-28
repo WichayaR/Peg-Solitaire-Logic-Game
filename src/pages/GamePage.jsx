@@ -149,7 +149,7 @@ export function GamePage() {
 
   if (loading || !room || !initialBoard) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-amber-100">
+      <div className="min-h-screen flex items-center justify-center text-mustard-100">
         <div className="animate-pulse">กำลังโหลดเกม…</div>
       </div>
     );
@@ -157,7 +157,7 @@ export function GamePage() {
 
   if (!me) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-amber-100">
+      <div className="min-h-screen flex items-center justify-center text-mustard-100">
         <div>คุณยังไม่ได้เข้าร่วมห้อง</div>
       </div>
     );
@@ -180,27 +180,27 @@ export function GamePage() {
   const isHost = room.host_id === persistentId;
 
   return (
-    <div className="min-h-screen text-slate-800">
-      <header className="px-6 py-4 flex flex-wrap items-center justify-between gap-3 bg-white/70 backdrop-blur shadow-soft border-b-2 border-lavender-soft">
+    <div className="min-h-screen text-bark">
+      <header className="px-6 py-4 flex flex-wrap items-center justify-between gap-3 bg-white/70 backdrop-blur shadow-soft border-b-2 border-sage-soft">
         <div className="flex items-center gap-3 flex-wrap">
           <button
             onClick={() => navigate('/')}
-            className="text-purple-500 hover:text-purple-800 font-bold"
+            className="text-sage hover:text-forest font-bold"
           >
             ← ออก
           </button>
-          <span className="text-purple-300">·</span>
-          <span className="font-mono tracking-widest text-rose-dark font-extrabold">
+          <span className="text-sage-soft">·</span>
+          <span className="font-mono tracking-widest text-rust font-extrabold">
             {code}
           </span>
-          <span className="text-purple-300">·</span>
-          <span className="text-purple-700 font-bold">
+          <span className="text-sage-soft">·</span>
+          <span className="text-forest font-bold">
             🎮 รอบ {room.current_round}/{room.max_rounds}
           </span>
           {currentLevel && (
             <>
-              <span className="text-purple-300">·</span>
-              <span className="text-purple-700 font-extrabold">
+              <span className="text-sage-soft">·</span>
+              <span className="text-forest font-extrabold">
                 {currentLevel.label}
               </span>
             </>
@@ -218,7 +218,7 @@ export function GamePage() {
       </header>
 
       <div className="max-w-6xl mx-auto px-6 py-6 grid lg:grid-cols-[280px_1fr_280px] gap-6">
-        <aside className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-4 border-2 border-lavender-soft">
+        <aside className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-4 border-2 border-sage-soft">
           <Scoreboard players={players} persistentId={persistentId} compact />
         </aside>
 
@@ -238,17 +238,17 @@ export function GamePage() {
               <div className="text-5xl mb-2">
                 {gameOver.win ? '🎉' : '⏰'}
               </div>
-              <div className="text-2xl font-extrabold text-purple-800 mb-2">
+              <div className="text-2xl font-extrabold text-forest mb-2">
                 {gameOver.win ? 'ยอดเยี่ยม!' : 'หมดเวลาแล้ว!'}
               </div>
-              <p className="text-purple-600 font-medium mb-4">
+              <p className="text-forest font-medium mb-4">
                 {gameOver.win
                   ? `เหลือแค่ 1 peg — เก่งมากเลย!`
                   : `เหลือ ${gameOver.pegs} pegs · ใช้ ${hintsUsed} คำใบ้`}
               </p>
               <button
                 onClick={handleSubmit}
-                className="px-6 py-3 rounded-2xl bg-gradient-to-r from-coral to-rose text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
+                className="px-6 py-3 rounded-2xl bg-gradient-to-r from-terracotta to-rose text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
               >
                 🏅 ส่งคะแนน
               </button>
@@ -265,7 +265,7 @@ export function GamePage() {
                 <div className="mt-3">
                   <button
                     onClick={handleNextRound}
-                    className="px-5 py-3 rounded-2xl bg-white text-rose-dark font-extrabold shadow-soft hover-bounce active:translate-y-1 transition-all"
+                    className="px-5 py-3 rounded-2xl bg-white text-rust font-extrabold shadow-soft hover-bounce active:translate-y-1 transition-all"
                   >
                     {room.current_round >= room.max_rounds
                       ? '🏆 สรุปผล'
@@ -282,35 +282,35 @@ export function GamePage() {
           )}
 
           {myResultThisRound && !submitted && (
-            <div className="text-purple-600 text-sm font-medium bg-white/60 px-4 py-2 rounded-full shadow-soft">
+            <div className="text-forest text-sm font-medium bg-white/60 px-4 py-2 rounded-full shadow-soft">
               ✓ คุณส่งคะแนนรอบนี้แล้ว · {myResultThisRound.score_delta} คะแนน
             </div>
           )}
         </main>
 
-        <aside className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-4 border-2 border-lavender-soft text-sm space-y-3">
+        <aside className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-4 border-2 border-sage-soft text-sm space-y-3">
           <div>
-            <div className="text-purple-400 text-xs uppercase font-bold tracking-wider">👤 ผู้เล่น</div>
-            <div className="text-purple-800 font-extrabold">{me.nickname}</div>
+            <div className="text-sage text-xs uppercase font-bold tracking-wider">👤 ผู้เล่น</div>
+            <div className="text-forest font-extrabold">{me.nickname}</div>
           </div>
           <div>
-            <div className="text-purple-400 text-xs uppercase font-bold tracking-wider">🎯 Pegs เหลือ</div>
-            <div className="text-rose-dark font-extrabold text-xl">
+            <div className="text-sage text-xs uppercase font-bold tracking-wider">🎯 Pegs เหลือ</div>
+            <div className="text-rust font-extrabold text-xl">
               {pegsRemaining}
             </div>
           </div>
           <div>
-            <div className="text-purple-400 text-xs uppercase font-bold tracking-wider">⏱️ ใช้เวลา</div>
-            <div className="text-rose-dark font-extrabold text-xl">
+            <div className="text-sage text-xs uppercase font-bold tracking-wider">⏱️ ใช้เวลา</div>
+            <div className="text-rust font-extrabold text-xl">
               {Math.floor(timeUsed / 60)}:
               {(timeUsed % 60).toString().padStart(2, '0')}
             </div>
           </div>
           {room.hints_allowed && (
             <div>
-              <div className="text-purple-400 text-xs uppercase font-bold tracking-wider">💡 คำใบ้</div>
-              <div className="text-rose-dark font-extrabold text-xl">
-                {hintsUsed} <span className="text-sm text-purple-500">(-{hintsUsed * room.hint_penalty})</span>
+              <div className="text-sage text-xs uppercase font-bold tracking-wider">💡 คำใบ้</div>
+              <div className="text-rust font-extrabold text-xl">
+                {hintsUsed} <span className="text-sm text-sage">(-{hintsUsed * room.hint_penalty})</span>
               </div>
             </div>
           )}

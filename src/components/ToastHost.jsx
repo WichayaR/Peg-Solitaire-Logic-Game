@@ -24,13 +24,13 @@ export function ToastProvider({ children }) {
             key={t.id}
             className={`
               px-5 py-3 rounded-2xl shadow-soft-lg text-sm font-bold ring-2 backdrop-blur
-              animate-float-up
+              animate-float-up text-cream
               ${
                 t.type === 'error'
-                  ? 'bg-gradient-to-r from-coral to-rose text-white ring-rose-dark'
+                  ? 'bg-gradient-to-r from-rust to-terracotta ring-rust'
                   : t.type === 'success'
-                    ? 'bg-gradient-to-r from-mint-dark to-emerald-400 text-white ring-emerald-500'
-                    : 'bg-white/95 text-purple-800 ring-lavender shadow-soft'
+                    ? 'bg-gradient-to-r from-sage to-forest ring-sage'
+                    : 'bg-gradient-to-r from-bark-light to-bark ring-bark'
               }
             `}
           >

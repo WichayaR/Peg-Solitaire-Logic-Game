@@ -107,11 +107,11 @@ export function SoloGamePage() {
   const lvl = LEVELS.find((l) => l.id === levelId);
 
   return (
-    <div className="min-h-screen text-slate-800">
+    <div className="min-h-screen text-bark">
       <div className="max-w-4xl mx-auto px-6 py-8">
         <button
           onClick={() => navigate('/')}
-          className="text-purple-500 hover:text-purple-800 mb-4 font-bold"
+          className="text-sage hover:text-forest mb-4 font-bold"
         >
           ← กลับหน้าแรก
         </button>
@@ -122,14 +122,14 @@ export function SoloGamePage() {
           </h1>
           <HowToPlay trigger="button" />
         </div>
-        <p className="text-purple-600 mb-6 font-medium">
+        <p className="text-forest mb-6 font-medium">
           เลือกด่านที่อยากเล่นแล้วลุยเลย!
         </p>
 
         {!running ? (
-          <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 space-y-5 max-w-xl border-2 border-lavender-soft">
+          <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 space-y-5 max-w-xl border-2 border-sage-soft">
             <div>
-              <label className="block text-sm font-bold text-purple-700 mb-2">
+              <label className="block text-sm font-bold text-forest mb-2">
                 🎯 เลือกด่าน
               </label>
               <LevelSelector
@@ -141,7 +141,7 @@ export function SoloGamePage() {
 
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-sm font-bold text-purple-700 mb-1">
+                <label className="block text-sm font-bold text-forest mb-1">
                   ⏰ เวลา (วิ)
                 </label>
                 <input
@@ -150,11 +150,11 @@ export function SoloGamePage() {
                   max={3600}
                   value={timerSeconds}
                   onChange={(e) => setTimerSeconds(Number(e.target.value))}
-                  className="w-full px-3 py-3 rounded-2xl bg-cream border-2 border-lavender-soft focus:border-rose outline-none"
+                  className="w-full px-3 py-3 rounded-2xl bg-cream border-2 border-sage-soft focus:border-rose outline-none"
                 />
               </div>
               <div>
-                <label className="block text-sm font-bold text-purple-700 mb-1">
+                <label className="block text-sm font-bold text-forest mb-1">
                   💡 ค่าปรับคำใบ้
                 </label>
                 <input
@@ -163,32 +163,32 @@ export function SoloGamePage() {
                   max={500}
                   value={hintPenalty}
                   onChange={(e) => setHintPenalty(Number(e.target.value))}
-                  className="w-full px-3 py-3 rounded-2xl bg-cream border-2 border-lavender-soft focus:border-rose outline-none"
+                  className="w-full px-3 py-3 rounded-2xl bg-cream border-2 border-sage-soft focus:border-rose outline-none"
                 />
               </div>
             </div>
 
             <button
               onClick={start}
-              className="w-full px-5 py-4 rounded-2xl bg-gradient-to-r from-coral via-rose to-rose-dark text-white font-extrabold text-lg shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
+              className="w-full px-5 py-4 rounded-2xl bg-gradient-to-r from-terracotta via-rose to-rust text-white font-extrabold text-lg shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
             >
               ▶ ลุยเลย!
             </button>
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="flex items-center justify-between gap-3 bg-white/70 backdrop-blur shadow-soft rounded-3xl p-4 border-2 border-lavender-soft">
-              <div className="text-purple-700 font-bold">
-                <strong className="text-rose-dark text-lg">{lvl.label}</strong>
-                <span className="block text-xs text-purple-500 mt-0.5">{lvl.description}</span>
+            <div className="flex items-center justify-between gap-3 bg-white/70 backdrop-blur shadow-soft rounded-3xl p-4 border-2 border-sage-soft">
+              <div className="text-forest font-bold">
+                <strong className="text-rust text-lg">{lvl.label}</strong>
+                <span className="block text-xs text-sage mt-0.5">{lvl.description}</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-mono font-extrabold text-rose-dark bg-gradient-to-r from-sunshine to-peach px-3 py-1.5 rounded-full shadow-soft">
+                <span className="font-mono font-extrabold text-rust bg-gradient-to-r from-sunshine to-peach px-3 py-1.5 rounded-full shadow-soft">
                   {formatTime(Math.max(0, timerSeconds - timeUsed))}
                 </span>
                 <button
                   onClick={reset}
-                  className="px-4 py-2 rounded-full bg-white shadow-soft hover-bounce text-purple-700 font-bold text-sm ring-2 ring-lavender-soft"
+                  className="px-4 py-2 rounded-full bg-white shadow-soft hover-bounce text-forest font-bold text-sm ring-2 ring-lavender-soft"
                 >
                   🔄 รีเซ็ต
                 </button>
@@ -213,17 +213,17 @@ export function SoloGamePage() {
                 <div className="text-5xl mb-2">
                   {endInfo.win ? '🎉' : '⏰'}
                 </div>
-                <div className="text-2xl font-extrabold text-purple-800 mb-2">
+                <div className="text-2xl font-extrabold text-forest mb-2">
                   {endInfo.win ? 'ยอดเยี่ยม!' : 'หมดเวลาแล้ว!'}
                 </div>
-                <p className="text-purple-600 font-medium mb-4">
+                <p className="text-forest font-medium mb-4">
                   {endInfo.win
                     ? `เหลือแค่ 1 peg! 🎯`
                     : `เหลือ ${endInfo.pegs} pegs · ใช้ ${hintsUsed} คำใบ้`}
                 </p>
                 <button
                   onClick={handleSubmit}
-                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-coral to-rose text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
+                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-terracotta to-rose text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
                 >
                   🏅 ดูคะแนน
                 </button>
@@ -232,13 +232,13 @@ export function SoloGamePage() {
 
             {score && (
               <div className="bg-gradient-to-br from-mint-soft via-cream to-sunshine/30 shadow-soft-lg rounded-3xl p-6 max-w-md mx-auto border-2 border-mint animate-pop-in">
-                <h3 className="text-2xl font-extrabold text-purple-800 mb-3 text-center">
+                <h3 className="text-2xl font-extrabold text-forest mb-3 text-center">
                   🎯 คะแนนของคุณ
                 </h3>
-                <div className="text-sm text-purple-700 space-y-1.5 bg-white/70 rounded-2xl p-4">
+                <div className="text-sm text-forest space-y-1.5 bg-white/70 rounded-2xl p-4">
                   <div className="flex justify-between">
                     <span>🎯 Peg score</span>
-                    <strong className="text-rose-dark">+{score.pegScore}</strong>
+                    <strong className="text-rust">+{score.pegScore}</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>⏰ Time bonus</span>
@@ -246,21 +246,21 @@ export function SoloGamePage() {
                   </div>
                   <div className="flex justify-between">
                     <span>💡 Hint cost</span>
-                    <strong className="text-coral">-{score.hintCost}</strong>
+                    <strong className="text-rust">-{score.hintCost}</strong>
                   </div>
                 </div>
-                <div className="mt-4 text-center text-3xl font-extrabold text-rose-dark">
+                <div className="mt-4 text-center text-3xl font-extrabold text-rust">
                   รวม {score.total} คะแนน! 🏆
                 </div>
                 <button
                   onClick={reset}
-                  className="mt-4 w-full px-5 py-3 rounded-2xl bg-gradient-to-r from-coral to-rose text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
+                  className="mt-4 w-full px-5 py-3 rounded-2xl bg-gradient-to-r from-terracotta to-rose text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
                 >
                   เล่นอีกครั้ง 🔄
                 </button>
                 <button
                   onClick={() => navigate('/')}
-                  className="mt-2 w-full px-4 py-2 rounded-2xl bg-white text-purple-700 font-bold shadow-soft hover-bounce text-sm"
+                  className="mt-2 w-full px-4 py-2 rounded-2xl bg-white text-forest font-bold shadow-soft hover-bounce text-sm"
                 >
                   กลับหน้าแรก 🏠
                 </button>

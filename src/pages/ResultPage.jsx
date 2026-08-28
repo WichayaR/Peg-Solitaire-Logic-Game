@@ -22,18 +22,18 @@ export function ResultPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-purple-700">
+      <div className="min-h-screen flex items-center justify-center text-forest">
         <div className="text-2xl font-bold animate-pulse">⏳ กำลังโหลดผล…</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen text-slate-800">
+    <div className="min-h-screen text-bark">
       <div className="max-w-3xl mx-auto px-6 py-12">
         <button
           onClick={() => navigate('/')}
-          className="text-purple-500 hover:text-purple-800 mb-4 font-bold"
+          className="text-sage hover:text-forest mb-4 font-bold"
         >
           ← กลับหน้าแรก
         </button>
@@ -43,24 +43,24 @@ export function ResultPage() {
           <h1 className="text-5xl font-extrabold mb-2 text-gradient-rose">
             สรุปผลการประลอง!
           </h1>
-          <div className="text-purple-600 font-bold">
-            ห้อง <span className="font-mono tracking-widest text-rose-dark">{code}</span> ·{' '}
+          <div className="text-forest font-bold">
+            ห้อง <span className="font-mono tracking-widest text-rust">{code}</span> ·{' '}
             {room?.max_rounds} รอบ
           </div>
           {myRank === 1 && (
-            <div className="mt-3 text-rose-dark text-2xl font-extrabold animate-pop-in">
+            <div className="mt-3 text-rust text-2xl font-extrabold animate-pop-in">
               🎉 คุณเป็นผู้ชนะ! ยอดเยี่ยมมาก!
             </div>
           )}
           {myRank && myRank > 1 && (
-            <div className="mt-2 text-purple-700 font-bold">
+            <div className="mt-2 text-forest font-bold">
               คุณได้อันดับ {myRank} 🎯
             </div>
           )}
         </div>
 
-        <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 mb-6 border-2 border-lavender-soft">
-          <h2 className="text-xl font-extrabold mb-4 text-purple-800">
+        <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 mb-6 border-2 border-sage-soft">
+          <h2 className="text-xl font-extrabold mb-4 text-forest">
             🏅 Leaderboard
           </h2>
           <div className="flex flex-col gap-2">
@@ -76,13 +76,13 @@ export function ResultPage() {
         </div>
 
         {results.length > 0 && (
-          <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 mb-6 border-2 border-lavender-soft overflow-x-auto">
-            <h2 className="text-xl font-extrabold mb-4 text-purple-800">
+          <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 mb-6 border-2 border-sage-soft overflow-x-auto">
+            <h2 className="text-xl font-extrabold mb-4 text-forest">
               📊 ผลแต่ละรอบ
             </h2>
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-purple-500 font-bold text-left">
+                <tr className="text-sage font-bold text-left">
                   <th className="pb-2">ผู้เล่น</th>
                   <th className="pb-2">รอบ</th>
                   <th className="pb-2">Pegs เหลือ</th>
@@ -98,14 +98,14 @@ export function ResultPage() {
                   return (
                     <tr
                       key={r.id}
-                      className="border-t-2 border-lavender-soft/60 text-purple-800"
+                      className="border-t-2 border-sage-soft/60 text-forest"
                     >
                       <td className="py-2 font-bold">{player.nickname}</td>
                       <td className="py-2">{r.round_number}</td>
                       <td className="py-2">{r.pegs_remaining}</td>
                       <td className="py-2">{r.hints_used}</td>
                       <td className="py-2">{r.time_used_seconds}s</td>
-                      <td className="py-2 font-extrabold text-rose-dark">
+                      <td className="py-2 font-extrabold text-rust">
                         {formatScore(r.score_delta)}
                       </td>
                     </tr>
@@ -119,7 +119,7 @@ export function ResultPage() {
         <div className="text-center">
           <button
             onClick={() => navigate('/')}
-            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-coral via-rose to-rose-dark text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
+            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-terracotta via-rose to-rust text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all"
           >
             กลับหน้าแรก 🏠
           </button>

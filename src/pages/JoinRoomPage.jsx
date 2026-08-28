@@ -62,11 +62,11 @@ export function JoinRoomPage() {
   }
 
   return (
-    <div className="min-h-screen text-slate-800">
+    <div className="min-h-screen text-bark">
       <div className="max-w-md mx-auto px-6 py-12">
         <button
           onClick={() => navigate('/')}
-          className="text-purple-500 hover:text-purple-800 mb-4 font-bold"
+          className="text-sage hover:text-forest mb-4 font-bold"
         >
           ← ย้อนกลับ
         </button>
@@ -77,10 +77,10 @@ export function JoinRoomPage() {
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 space-y-5 border-2 border-lavender-soft"
+          className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 space-y-5 border-2 border-sage-soft"
         >
           <div>
-            <label className="block text-sm font-bold text-purple-700 mb-2">
+            <label className="block text-sm font-bold text-forest mb-2">
               ✏️ ชื่อของคุณ
             </label>
             <input
@@ -88,13 +88,13 @@ export function JoinRoomPage() {
               value={nickname}
               onChange={(e) => setNickname(e.target.value)}
               maxLength={20}
-              className="w-full px-4 py-3 rounded-2xl bg-cream border-2 border-lavender-soft focus:border-rose outline-none font-medium"
+              className="w-full px-4 py-3 rounded-2xl bg-cream border-2 border-sage-soft focus:border-rose outline-none font-medium"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-purple-700 mb-2">
+            <label className="block text-sm font-bold text-forest mb-2">
               🔑 รหัสห้อง (6 ตัว)
             </label>
             <input
@@ -103,7 +103,7 @@ export function JoinRoomPage() {
               onChange={(e) => setCode(e.target.value.toUpperCase())}
               maxLength={6}
               placeholder="A3K9P2"
-              className="w-full px-4 py-4 rounded-2xl bg-cream border-2 border-lavender-soft focus:border-rose outline-none text-center text-3xl tracking-[0.4em] font-extrabold text-rose-dark"
+              className="w-full px-4 py-4 rounded-2xl bg-cream border-2 border-sage-soft focus:border-rose outline-none text-center text-3xl tracking-[0.4em] font-extrabold text-rust"
               required
             />
           </div>
@@ -111,7 +111,7 @@ export function JoinRoomPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-5 py-4 rounded-2xl bg-gradient-to-r from-coral via-rose to-rose-dark text-white font-extrabold text-lg shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all disabled:opacity-50"
+            className="w-full px-5 py-4 rounded-2xl bg-gradient-to-r from-terracotta via-rose to-rust text-white font-extrabold text-lg shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all disabled:opacity-50"
           >
             {loading ? '⏳ กำลังค้นหา…' : '🚀 เข้าร่วมเลย!'}
           </button>

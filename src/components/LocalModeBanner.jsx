@@ -3,7 +3,7 @@ import { isSupabaseConfigured } from '../lib/supabase.js';
 export function LocalModeBanner() {
   if (isSupabaseConfigured) return null;
   return (
-    <div className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-sunshine via-peach to-rose text-white shadow-soft text-xs sm:text-sm">
+    <div className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-mustard via-terracotta to-rust text-cream shadow-soft text-xs sm:text-sm">
       <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between gap-3">
         <div>
           <strong className="font-bold">🧪 โหมดทดสอบ</strong>

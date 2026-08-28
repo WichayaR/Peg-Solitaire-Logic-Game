@@ -3,25 +3,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Pastel palette */
+  /* EarthTone palette */
+  --color-forest: #546046;
+  --color-sage: #70998b;
+  --color-sage-soft: #b8d2c5;
+  --color-mustard: #efb746;
+  --color-mustard-soft: #f5d9a0;
+  --color-terracotta: #e39a7a;
+  --color-peach: #ebbda6;
+  --color-peach-soft: #f5dcc8;
+  --color-rust: #b94d27;
   --color-cream: #fff8f0;
   --color-cream-dark: #f5ebe0;
-  --color-mint-soft: #d4f1e4;
-  --color-mint: #a8e6cf;
-  --color-mint-dark: #88d8b0;
-  --color-lavender: #cbb4ff;
-  --color-lavender-soft: #e0d4ff;
-  --color-peach: #ffc9a8;
-  --color-coral: #ff8a80;
-  --color-rose: #ff6b9d;
-  --color-rose-dark: #d94f7f;
-  --color-sky: #b8dfff;
-  --color-sunshine: #ffe082;
-  --color-text-primary: #4a3a5c;
-  --color-text-secondary: #7a6b8c;
-  --color-text-muted: #a899b8;
+  --color-bark: #3a2f2a;
+  --color-bark-light: #5c4a40;
 
-  /* Font — system fallback ที่ descender ใกล้เคียง Quicksand */
+  /* Font */
   --font-display: "Quicksand", "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif;
   --font-sans: "Quicksand", "Trebuchet MS", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -33,8 +30,8 @@ html, body, #root {
 body {
   margin: 0;
   padding-top: 36px;
-  background: linear-gradient(135deg, #fff8f0 0%, #fce4ec 50%, #e0d4ff 100%);
-  color: var(--color-text-primary);
+  background: linear-gradient(135deg, #fff8f0 0%, #f5dcc8 50%, #b8d2c5 100%);
+  color: var(--color-bark);
   font-family: var(--font-sans);
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
@@ -50,29 +47,38 @@ button, h1, h2, h3, h4 {
 
 /* soft shadow utility */
 .shadow-soft {
-  box-shadow: 0 4px 14px rgba(74, 58, 92, 0.08), 0 2px 4px rgba(74, 58, 92, 0.04);
+  box-shadow: 0 4px 14px rgba(58, 47, 42, 0.10), 0 2px 4px rgba(58, 47, 42, 0.05);
 }
 .shadow-soft-lg {
-  box-shadow: 0 8px 28px rgba(74, 58, 92, 0.12), 0 4px 8px rgba(74, 58, 92, 0.06);
+  box-shadow: 0 8px 28px rgba(58, 47, 42, 0.14), 0 4px 8px rgba(58, 47, 42, 0.07);
 }
 .shadow-pop {
-  box-shadow: 0 6px 0 rgba(74, 58, 92, 0.15), 0 8px 18px rgba(74, 58, 92, 0.08);
+  box-shadow: 0 6px 0 rgba(58, 47, 42, 0.18), 0 8px 18px rgba(58, 47, 42, 0.10);
 }
 
 /* gradient text — reliable across Tailwind v4 */
 .text-gradient-rose {
-  background-image: linear-gradient(135deg, #d94f7f 0%, #ff8a80 50%, #ffe082 100%);
+  background-image: linear-gradient(135deg, #b94d27 0%, #e39a7a 50%, #efb746 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  /* fix descender clipping */
   line-height: 1.15;
   padding-bottom: 0.15em;
   display: inline-block;
 }
 .text-gradient-mint {
-  background-image: linear-gradient(135deg, #88d8b0 0%, #b8dfff 100%);
+  background-image: linear-gradient(135deg, #70998b 0%, #b8d2c5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  line-height: 1.15;
+  padding-bottom: 0.15em;
+  display: inline-block;
+}
+.text-gradient-forest {
+  background-image: linear-gradient(135deg, #546046 0%, #70998b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

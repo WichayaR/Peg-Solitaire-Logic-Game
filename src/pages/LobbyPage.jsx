@@ -97,7 +97,7 @@ export function LobbyPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-purple-700">
+      <div className="min-h-screen flex items-center justify-center text-forest">
         <div className="text-2xl font-bold animate-pulse">⏳ กำลังโหลดห้อง…</div>
       </div>
     );
@@ -105,8 +105,8 @@ export function LobbyPage() {
 
   if (error || !room) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-purple-700">
-        <div className="bg-gradient-to-r from-coral to-rose text-white px-8 py-4 rounded-2xl shadow-soft-lg font-bold">
+      <div className="min-h-screen flex items-center justify-center text-forest">
+        <div className="bg-gradient-to-r from-terracotta to-rose text-white px-8 py-4 rounded-2xl shadow-soft-lg font-bold">
           {error || 'ไม่พบห้อง 😢'}
         </div>
       </div>
@@ -116,18 +116,18 @@ export function LobbyPage() {
   const levelInfo = LEVELS.find((l) => l.id === room.level);
 
   return (
-    <div className="min-h-screen text-slate-800">
+    <div className="min-h-screen text-bark">
       <div className="max-w-5xl mx-auto px-6 py-8">
         <button
           onClick={() => navigate('/')}
-          className="text-purple-500 hover:text-purple-800 mb-4 font-bold"
+          className="text-sage hover:text-forest mb-4 font-bold"
         >
           ← กลับหน้าแรก
         </button>
 
         <div className="flex flex-wrap items-start justify-between gap-4 mb-6 animate-float-up">
           <div>
-            <div className="text-sm uppercase tracking-wider text-purple-400 font-bold">
+            <div className="text-sm uppercase tracking-wider text-sage font-bold">
               🔑 Room Code
             </div>
             <div className="flex items-center gap-3 mt-1">
@@ -153,8 +153,8 @@ export function LobbyPage() {
         </div>
 
         <div className="grid lg:grid-cols-[1fr_320px] gap-6">
-          <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 border-2 border-lavender-soft animate-float-up">
-            <h2 className="text-2xl font-extrabold mb-4 text-purple-800">
+          <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-6 border-2 border-sage-soft animate-float-up">
+            <h2 className="text-2xl font-extrabold mb-4 text-forest">
               ⚙️ การตั้งค่าห้อง
             </h2>
             <dl className="grid sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
@@ -169,7 +169,7 @@ export function LobbyPage() {
                 {room.hints_allowed ? `เปิด (-${room.hint_penalty} คะแนน)` : 'ปิด'}
               </Row>
               <Row label="📊 สถานะ">
-                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-sunshine to-peach text-purple-800 text-xs font-extrabold uppercase">
+                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-sunshine to-peach text-forest text-xs font-extrabold uppercase">
                   {room.status}
                 </span>
               </Row>
@@ -182,7 +182,7 @@ export function LobbyPage() {
                   placeholder="ชื่อของคุณ..."
                   defaultValue={nickname}
                   onChange={(e) => setNickname(e.target.value)}
-                  className="flex-1 min-w-[160px] px-3 py-3 rounded-2xl bg-cream border-2 border-lavender-soft focus:border-rose outline-none"
+                  className="flex-1 min-w-[160px] px-3 py-3 rounded-2xl bg-cream border-2 border-sage-soft focus:border-rose outline-none"
                 />
               )}
 
@@ -194,7 +194,7 @@ export function LobbyPage() {
                     ${
                       me.is_ready
                         ? 'bg-gradient-to-r from-mint-dark to-emerald-400 text-white shadow-pop'
-                        : 'bg-white text-purple-700 ring-2 ring-lavender-soft'
+                        : 'bg-white text-forest ring-2 ring-lavender-soft'
                     }
                   `}
                 >
@@ -206,7 +206,7 @@ export function LobbyPage() {
                 <button
                   onClick={handleStart}
                   disabled={!canStart || starting}
-                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-coral via-rose to-rose-dark text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-terracotta via-rose to-rust text-white font-extrabold shadow-pop hover-bounce active:translate-y-1 active:shadow-none transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                   title={
                     !hasEnoughPlayers
                       ? `ต้องมีผู้เล่นอย่างน้อย ${minPlayers} คน`
@@ -222,7 +222,7 @@ export function LobbyPage() {
 
             <div className="mt-4 space-y-1">
               {!isHost && room?.status === 'waiting' && (
-                <div className="text-purple-700 text-sm font-medium">
+                <div className="text-forest text-sm font-medium">
                   {hasEnoughPlayers
                     ? allReady
                       ? '✓ ทุกคนพร้อมแล้ว — รอหัวหน้าทีมสั่งลุย…'
@@ -231,12 +231,12 @@ export function LobbyPage() {
                 </div>
               )}
               {isHost && !hasEnoughPlayers && (
-                <div className="text-amber-700 text-sm font-medium">
+                <div className="text-mustard-700 text-sm font-medium">
                   ⏳ รอผู้เล่นอย่างน้อย {minPlayers} คน — ตอนนี้มี {players.length} คน
                 </div>
               )}
               {isHost && hasEnoughPlayers && !allReady && (
-                <div className="text-amber-700 text-sm font-medium">
+                <div className="text-mustard-700 text-sm font-medium">
                   ⏳ รอผู้เล่นกดพร้อม — {readyCount}/{players.length} คนพร้อมแล้ว
                 </div>
               )}
@@ -248,14 +248,14 @@ export function LobbyPage() {
             </div>
           </div>
 
-          <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-4 border-2 border-lavender-soft">
+          <div className="bg-white/70 backdrop-blur shadow-soft-lg rounded-3xl p-4 border-2 border-sage-soft">
             <Scoreboard
               players={players}
               persistentId={persistentId}
               compact
               showReady={room?.status === 'waiting'}
             />
-            <div className="mt-3 text-xs text-purple-500 px-2 font-medium">
+            <div className="mt-3 text-xs text-sage px-2 font-medium">
               {me ? `คุณเข้าร่วมในชื่อ "${me.nickname}"` : '⏳ กำลังเพิ่มคุณเข้าห้อง…'}
             </div>
           </div>
@@ -268,8 +268,8 @@ export function LobbyPage() {
 function Row({ label, children }) {
   return (
     <>
-      <dt className="text-purple-500 font-bold">{label}</dt>
-      <dd className="text-purple-800 font-extrabold">{children}</dd>
+      <dt className="text-sage font-bold">{label}</dt>
+      <dd className="text-forest font-extrabold">{children}</dd>
     </>
   );
 }

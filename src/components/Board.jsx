@@ -125,7 +125,7 @@ export function Board({
   return (
     <div className="flex flex-col items-center gap-4">
       <div
-        className="grid gap-1 p-4 rounded-[2rem] shadow-soft-lg ring-4 ring-amber-900/30"
+        className="grid gap-1 p-4 rounded-[2rem] shadow-soft-lg ring-4 ring-bark/30"
         style={{
           gridTemplateColumns: `repeat(${board.length}, ${size}px)`,
           gridTemplateRows: `repeat(${board.length}, ${size}px)`,
@@ -174,24 +174,24 @@ export function Board({
       </div>
 
       {selected && !disabled && (
-        <div className="bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-soft text-sm font-bold text-purple-700 animate-pop-in">
+        <div className="bg-cream/80 backdrop-blur px-4 py-2 rounded-full shadow-soft text-sm font-bold text-forest animate-pop-in">
           ✨ เลือกหลุมที่กระโดดลงได้ ({selectedMoves.length} ตำแหน่ง)
         </div>
       )}
 
-      <div className="flex items-center gap-3 text-sm font-bold text-purple-700 bg-white/60 px-5 py-2.5 rounded-full shadow-soft">
-        <span>🎯 Pegs: <strong className="text-rose-dark">{pegs}</strong></span>
-        <span className="text-purple-300">|</span>
-        <span>⚡ Moves: <strong className="text-rose-dark">{validMoves.length}</strong></span>
+      <div className="flex items-center gap-3 text-sm font-bold text-forest bg-cream/70 px-5 py-2.5 rounded-full shadow-soft">
+        <span>🎯 Pegs: <strong className="text-rust">{pegs}</strong></span>
+        <span className="text-sage">|</span>
+        <span>⚡ Moves: <strong className="text-rust">{validMoves.length}</strong></span>
         {hintsAllowed && (
           <>
-            <span className="text-purple-300">|</span>
-            <span>💡 Hints: <strong className="text-rose-dark">{hintsUsed}</strong></span>
+            <span className="text-sage">|</span>
+            <span>💡 Hints: <strong className="text-rust">{hintsUsed}</strong></span>
             <button
               type="button"
               onClick={useHint}
               disabled={disabled || validMoves.length === 0}
-              className="ml-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-sky to-lavender hover-bounce text-white text-xs font-bold shadow-soft disabled:opacity-40 active:scale-95 transition"
+              className="ml-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-sage to-forest hover-bounce text-cream text-xs font-bold shadow-soft disabled:opacity-40 active:scale-95 transition"
               title={`ใช้คำใบ้ หัก ${hintPenalty} คะแนน`}
             >
               💡 คำใบ้ (-{hintPenalty})

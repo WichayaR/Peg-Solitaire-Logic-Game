@@ -10,10 +10,10 @@ export function Scoreboard({ players, persistentId, compact = false, showReady =
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between px-2">
-        <h3 className="text-sm uppercase tracking-wider text-purple-700 font-extrabold">
+        <h3 className="text-sm uppercase tracking-wider text-forest font-extrabold">
           🏆 กระดานคะแนน
         </h3>
-        <span className="text-xs text-purple-500 font-medium">
+        <span className="text-xs text-sage font-medium">
           {players.length} คน
         </span>
       </div>
@@ -24,7 +24,7 @@ export function Scoreboard({ players, persistentId, compact = false, showReady =
         `}
       >
         {sorted.length === 0 ? (
-          <div className="text-sm text-purple-400 px-3 py-4 text-center bg-white/40 rounded-2xl">
+          <div className="text-sm text-sage px-3 py-4 text-center bg-cream-dark/60 rounded-2xl">
             ยังไม่มีผู้เล่น
           </div>
         ) : (
@@ -43,7 +43,7 @@ export function Scoreboard({ players, persistentId, compact = false, showReady =
       {compact && sorted.length > 5 && (
         <button
           onClick={() => setExpanded((e) => !e)}
-          className="text-xs text-purple-600 hover:text-purple-800 px-3 py-2 rounded-full bg-white/60 hover:bg-white shadow-soft font-bold"
+          className="text-xs text-forest hover:text-rust px-3 py-2 rounded-full bg-cream hover:bg-mustard-soft shadow-soft font-bold"
         >
           {expanded
             ? '▲ ย่อ'

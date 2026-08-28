@@ -22,10 +22,10 @@ export function Timer({ seconds, onExpire, running = true }) {
   const warning = remaining <= 30 && remaining > 10;
 
   const color = danger
-    ? 'bg-gradient-to-r from-coral to-rose text-white animate-pulse'
+    ? 'bg-gradient-to-r from-rust to-terracotta text-cream animate-pulse'
     : warning
-      ? 'bg-gradient-to-r from-sunshine to-peach text-purple-800'
-      : 'bg-gradient-to-r from-mint to-sky text-purple-800';
+      ? 'bg-gradient-to-r from-mustard to-peach text-bark'
+      : 'bg-gradient-to-r from-sage to-sage-soft text-bark';
 
   return (
     <div className={`flex items-center gap-2 px-4 py-2 rounded-2xl shadow-soft ${color}`}>
